@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PasswordView: View {
-    @State private var password = ""
+    @EnvironmentObject var viewModel:RegistrationViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
@@ -21,7 +21,7 @@ struct PasswordView: View {
                 .font(.footnote)
                 .fontWeight(.light)
                 .foregroundStyle(Color(.gray))
-            TextField("Enter Password",text: $password)
+            SecureField("Enter Password",text: $viewModel.password)
                 .autocorrectionDisabled()
                 .font(.subheadline)
                 .padding(12)

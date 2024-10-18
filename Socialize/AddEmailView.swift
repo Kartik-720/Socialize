@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AddEmailView: View {
-    @State private var email = ""
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel:RegistrationViewModel
     var body: some View {
         VStack{
             Text("Add your email")
@@ -20,7 +20,7 @@ struct AddEmailView: View {
                 .font(.footnote)
                 .fontWeight(.light)
                 .foregroundStyle(Color(.gray)) 
-            TextField("Enter you email",text: $email)
+            TextField("Enter you email",text: $viewModel.email)
                 .autocorrectionDisabled()
                 .font(.subheadline)
                 .padding(12)

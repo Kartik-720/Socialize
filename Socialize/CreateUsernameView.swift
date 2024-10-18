@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CreateUsernameView: View {
-    @State private var username = ""
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel:RegistrationViewModel
     var body: some View {
         VStack{
             Text("Create Username")
@@ -21,7 +21,7 @@ struct CreateUsernameView: View {
                 .font(.footnote)
                 .fontWeight(.light)
                 .foregroundStyle(Color(.gray))
-            TextField("Enter Username",text: $username)
+            TextField("Enter Username",text: $viewModel.username)
                 .autocorrectionDisabled()
                 .font(.subheadline)
                 .padding(12)

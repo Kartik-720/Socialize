@@ -10,10 +10,11 @@ import SwiftUI
 struct CompleteSignupView: View {
     @State private var username = ""
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel:RegistrationViewModel
     var body: some View {
         VStack{
             Spacer()
-            Text("Welcome to instagram")
+            Text("Welcome to Chi8i")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
@@ -22,9 +23,8 @@ struct CompleteSignupView: View {
                 .font(.footnote)
                 .fontWeight(.light)
                 .foregroundStyle(Color(.gray))
-            NavigationLink {
-                FeedView()
-                    .navigationBarBackButtonHidden()
+            Button{
+                Task{try await viewModel.createUser()}
             } label: {
                 Text("Complete Sign Up")
                     .font(.title2)
